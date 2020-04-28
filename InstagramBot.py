@@ -23,12 +23,31 @@ class InstagramBot:
         password_item.send_keys(Keys.RETURN)
         time.sleep(5)
 
-    def follow(self, page):
+    def follow(self, idname, inPage = False):#função segue o perfil passado para a função
         driver = self.driver
+        #se o bot não estiver na pagina ele precisa ir até a pagina
+        if inPage == False:                 
+            driver.get('https://www.instagram.com/{}/'.format(idname))#recebe o perfil
+            time.sleep(5)
+        driver.find_element_by_xpath('//button[@class="_5f5mN       jIbKX  _6VtSN     yZn4P   "]').click()#clica non botão "seguir"
+
+    def unfollow(self, idname, inPage = False):#funçãoo para deseguir o perfil passaddo para a função
+        driver = self.driver
+        #se o bot não estiver na pagina ele precisa ir até a pagina
+        if inPage == False:        
+            driver.get('https://www.instagram.com/{}/'.format(idname))#recebe o perfil
+            time.sleep(5)
         
-        driver.get(page)
-
-        driver.find_element_by_xpath('//a[@href="/python.bot/followers/"]').click()
-
-        #//a[@href="/python.bot/followers/"]
-        #<a class="-nal3 " href="/python.bot/followers/"><span class="g47SY " title="64">64</span> seguidores</a>
+        driver.find_element_by_xpath('//button[@class="_5f5mN    -fzfL     _6VtSN     yZn4P   "]').click()#clica no botão "deseguir" 
+        time.sleep(3)
+        driver.find_element_by_xpath('//button[@class="aOOlW -Cab_   "]').click()#confirma o unfollow
+        
+    def followers(self, idname, inPage):
+        driver = self.driver
+        if inPage == False:        
+            driver.get('https://www.instagram.com/{}/'.format(idname))#recebe o perfil
+            time.sleep(5)
+        
+        driver.find_element_by_xpath('//a[@href="/{}/followers/"]'.format(idname)).click()
+        #a class="-nal3 " href="/caiobotturapro/followers/"
+        #
