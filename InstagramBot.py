@@ -77,7 +77,7 @@ class InstagramBot:
         else:
             return True
     
-        
+    #bot
     def followers(self, idname, inPage):
         driver = self.driver
         if inPage == False:        
@@ -87,5 +87,14 @@ class InstagramBot:
         driver.find_element_by_xpath('//a[@href="/{}/followers/"]'.format(idname)).click()
         time.sleep(3)
         driver.find_element_by_xpath('//a[@class="FPmhX notranslate  _0imsa "]').click()
-        #a class="-nal3 " href="/caiobotturapro/followers/"
-        #
+        
+    def likes(self, photo, inPage):
+        driver = self.driver
+        if inPage == False:        
+            driver.get(photo)#recebe o perfil
+            time.sleep(5)
+        
+        driver.find_element_by_xpath('//buttpn[@class="sqdOP yWX7d     _8A5w5    "]').click()
+        time.sleep(3)
+        driver.find_element_by_xpath('//a[@class="FPmhX notranslate  _0imsa "]').click()
+        

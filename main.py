@@ -1,17 +1,24 @@
 from InstagramBot import InstagramBot
+from util_json import util_json
 import time
 
-#usuario = str(input('Usuario: '))
-#senha = str(input('Senha: '))
+#dar entrada em informaões do bot
+#user = str(input('Usuario: '))
+#password = str(input('Senha: '))
 
-usuario = 'Marvin_Robot63'
-senha = '36461023'
+#perfil
+#photo
+user = 'Marvin_Robot63'
+password = '36461023'
 
-Bot = InstagramBot()
-Bot.login(usuario, senha)
-Bot.followers('caiobotturapro', False)
+#login
+bot_driver = InstagramBot()
+bot_driver.login(user, password)
 
 
-#Bot.follow('https://www.instagram.com/caiobotturapro/?hl=pt-br', False)
-#time.sleep(5)
-#Bot.unfollow('https://www.instagram.com/caiobotturapro/?hl=pt-br', True)
+#seguir por perfil
+#id_perfil = str(input('Id do perfil: '))
+id_perfil = 'caiobotturapro'
+
+
+for i in range(10):
