@@ -15,10 +15,29 @@ password = '36461023'
 bot_driver = InstagramBot()
 bot_driver.login(user, password)
 
+#foto alvo do bot
+#page = str(input('Link da foto: '))
+page = "https://www.instagram.com/p/CA36GVqnLYo/"
 
-#seguir por perfil
-#id_perfil = str(input('Id do perfil: '))
-id_perfil = 'caiobotturapro'
+list = []
+
+while len(list) < 3:
+    bot_driver.likes(page, False)
+    if bot_driver.verify_private_account():
+        continue
+    else:
+        id_perfil = bot_driver.takeId()
+        if id_perfil in list:
+            continue
+        else:
+            list.append(id_perfil)
+            time.sleep(5)
+            bot_driver.followid(id_perfil, True)
+            time.sleep(5)
+            
+
+
+print(list)    
 
 
 
